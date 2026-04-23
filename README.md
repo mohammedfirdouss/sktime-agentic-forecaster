@@ -6,6 +6,22 @@ Ref: [sktime/sktime#9721](https://github.com/sktime/sktime/issues/9721)
 
 ---
 
+## Results
+
+### Training data
+![Training data](assets/01_training_data.png)
+
+### LLM-selected pipeline & predictions
+![Pipeline and predictions](assets/02_pipeline_and_predictions.png)
+
+### Forecast vs actuals
+![Forecast plot](assets/03_forecast_plot.png)
+
+### Re-using the fitted pipeline
+![Reuse pipeline](assets/04_reuse_pipeline.png)
+
+---
+
 ## What it does
 
 You give it a text prompt and a dataset. It gives you a forecast.
@@ -100,7 +116,7 @@ print(result.explanation)
 
 ```bash
 pip install -e ".[dev]"
-jupyter notebook examples/demo.ipynb
+jupyter notebook examples/demo1.ipynb
 ```
 
 The notebook walks through loading data, running the agent, plotting predictions vs actuals, and reusing the fitted pipeline.
