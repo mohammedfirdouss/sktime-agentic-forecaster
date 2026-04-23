@@ -53,7 +53,7 @@ class AnthropicBackend(LLMBackend):
 
 
 class GeminiBackend(LLMBackend):
-    def __init__(self, model: str = "gemini-3.0-flash", api_key: str | None = None):
+    def __init__(self, model: str = "gemini-3.1-flash", api_key: str | None = None):
         self._model_name = model
         self._api_key = api_key or os.environ.get("GOOGLE_API_KEY", "")
 
