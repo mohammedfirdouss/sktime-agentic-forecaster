@@ -53,22 +53,26 @@ class AnthropicBackend(LLMBackend):
 
 
 class GeminiBackend(LLMBackend):
-    def __init__(self, model: str = "gemini-3.1-flash", api_key: str | None = None):
+    def __init__(self, model: str = "gemini-2.5-flash", api_key: str | None = None):
         self._model_name = model
         self._api_key = api_key or os.environ.get("GOOGLE_API_KEY", "")
 
     def complete(self, system: str, user: str) -> str:
         try:
-            import google.generativeai as genai
+            from google import genai
+            from google.genai import types
         except ImportError:
-            raise ImportError("pip install google-generativeai")
-        genai.configure(api_key=self._api_key)
-        model = genai.GenerativeModel(
-            model_name=self._model_name,
-            generation_config={"response_mime_type": "application/json"},
-            system_instruction=system,
+            raise ImportError("pip install google-genai")
+        client = genai.Client(api_key=self._api_key)
+        resp = client.models.generate_content(
+            model=self._model_name,
+            contents=user,
+            config=types.GenerateContentConfig(
+                system_instruction=system,
+                response_mime_type="application/json",
+                temperature=0,
+            ),
         )
-        resp = model.generate_content(user)
         return resp.text
 
 
