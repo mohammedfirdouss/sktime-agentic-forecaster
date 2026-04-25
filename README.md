@@ -9,15 +9,19 @@ Ref: [sktime/sktime#9721](https://github.com/sktime/sktime/issues/9721)
 ## Results
 
 ### Training data
+
 ![Training data](assets/01_training_data.png)
 
 ### LLM-selected pipeline & predictions
+
 ![Pipeline and predictions](assets/02_pipeline_and_predictions.png)
 
 ### Forecast vs actuals
+
 ![Forecast plot](assets/03_forecast_plot.png)
 
 ### Re-using the fitted pipeline
+
 ![Reuse pipeline](assets/04_reuse_pipeline.png)
 
 ---
@@ -55,14 +59,14 @@ pip install -e ".[anthropic]"   # or [openai] / [gemini] / [langchain] / [all]
 
 ### Backend extras
 
-| Extra | Installs | Use when |
-|---|---|---|
-| `[anthropic]` | `anthropic` SDK | Using Claude (recommended) |
-| `[openai]` | `openai` SDK | Using GPT-4o / GPT-4 |
-| `[gemini]` | `google-generativeai` | Using Gemini |
-| `[langchain]` | `langchain`, `langchain-core` | Passing any LangChain LLM |
-| `[all]` | All of the above | |
-| `[dev]` | `pytest`, `jupyter`, `matplotlib` | Development / running the demo |
+| Extra         | Installs                          | Use when                       |
+| ------------- | --------------------------------- | ------------------------------ |
+| `[anthropic]` | `anthropic` SDK                   | Using Claude (recommended)     |
+| `[openai]`    | `openai` SDK                      | Using GPT-4o / GPT-4           |
+| `[gemini]`    | `google-generativeai`             | Using Gemini                   |
+| `[langchain]` | `langchain`, `langchain-core`     | Passing any LangChain LLM      |
+| `[all]`       | All of the above                  |                                |
+| `[dev]`       | `pytest`, `jupyter`, `matplotlib` | Development / running the demo |
 
 ---
 
@@ -137,9 +141,11 @@ The notebook walks through loading data, running the agent, plotting predictions
 ## Available estimators
 
 ### Forecasters
+
 `NaiveForecaster`, `ExponentialSmoothing`, `AutoARIMA`, `ARIMA`, `ThetaForecaster`, `AutoETS`, `TBATS`
 
 ### Transformers (prepended to pipeline)
+
 `Deseasonalizer`, `Detrender`, `BoxCoxTransformer`, `LogTransformer`, `Imputer`
 
 ---
