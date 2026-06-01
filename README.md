@@ -4,8 +4,6 @@ An LLM-powered forecasting agent that takes a natural language description of a 
 
 Ref: [sktime/sktime#9721](https://github.com/sktime/sktime/issues/9721)
 
----
-
 ## Results
 
 ### Training data
@@ -23,8 +21,6 @@ Ref: [sktime/sktime#9721](https://github.com/sktime/sktime/issues/9721)
 ### Re-using the fitted pipeline
 
 ![Reuse pipeline](assets/04_reuse_pipeline.png)
-
----
 
 ## What it does
 
@@ -47,8 +43,6 @@ print(result.explanation)          # why it chose this approach
 print(result.selected_estimators)  # e.g. ["Deseasonalizer", "Detrender", "AutoARIMA"]
 ```
 
----
-
 ## Installation
 
 ```bash
@@ -67,8 +61,6 @@ pip install -e ".[anthropic]"   # or [openai] / [gemini] / [langchain] / [all]
 | `[langchain]` | `langchain`, `langchain-core`     | Passing any LangChain LLM      |
 | `[all]`       | All of the above                  |                                |
 | `[dev]`       | `pytest`, `jupyter`, `matplotlib` | Development / running the demo |
-
----
 
 ## API keys
 
@@ -91,8 +83,6 @@ Or add it to a `.env` file in the project root (already in `.gitignore`):
 ANTHROPIC_API_KEY=sk-ant-...
 ```
 
----
-
 ## Quick start
 
 ```python
@@ -114,8 +104,6 @@ print(result.predictions)
 print(result.explanation)
 ```
 
----
-
 ## Demo notebook
 
 ```bash
@@ -124,8 +112,6 @@ jupyter notebook examples/demo1.ipynb
 ```
 
 The notebook walks through loading data, running the agent, plotting predictions vs actuals, and reusing the fitted pipeline.
-
----
 
 ## How it works
 
@@ -136,8 +122,6 @@ The notebook walks through loading data, running the agent, plotting predictions
 5. **Fit and predict** — the pipeline is fitted on your data and returns predictions for the requested horizon.
 6. **Structured output** — you get predictions, the live pipeline object, and the LLM's reasoning.
 
----
-
 ## Available estimators
 
 ### Forecasters
@@ -147,8 +131,6 @@ The notebook walks through loading data, running the agent, plotting predictions
 ### Transformers (prepended to pipeline)
 
 `Deseasonalizer`, `Detrender`, `BoxCoxTransformer`, `LogTransformer`, `Imputer`
-
----
 
 ## Using a LangChain LLM
 
@@ -163,8 +145,6 @@ result = AgenticForecaster(llm_backend=ChatOpenAI(model="gpt-4o")).forecast(
 )
 ```
 
----
-
 ## Running tests
 
 No API key needed — all LLM calls are mocked.
@@ -173,8 +153,6 @@ No API key needed — all LLM calls are mocked.
 pip install -e ".[dev]"
 pytest tests/ -v
 ```
-
----
 
 ## Design decisions
 
@@ -185,15 +163,11 @@ Based on guidance from [sktime#9721](https://github.com/sktime/sktime/issues/972
 - **sktime-native output.** The returned pipeline is a real sktime object you can inspect, refit, or serialize.
 - **Forecasting first.** Initial prototype focuses on univariate forecasting with optional transformation pipelines.
 
----
-
 ## Requirements
 
 - Python >= 3.9
 - sktime >= 0.24.0
 - One LLM backend (see Installation)
-
----
 
 ## License
 
